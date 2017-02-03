@@ -1,8 +1,0 @@
-~/JavaEE/Exercices/prerequis$  java prerequis.App
-
-calling deprecatedMethod is deprecated
-calling nonDeprecatedMethod is well supported
-
-
-Comment Créer
- javac -Xlint prerequis/*.java
