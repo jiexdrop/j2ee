@@ -1,4 +1,4 @@
-package bean;
+package jnvarzea.bean;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -17,11 +17,12 @@ public class Person {
     public Person() {
     }
 
+    @NotNull
     private String login;
 
     @NotNull
     @Email(message = "incorrect format")
-    private String email;gi
+    private String email;
     private Boolean isStudent;
 
     public String getFirstName() {

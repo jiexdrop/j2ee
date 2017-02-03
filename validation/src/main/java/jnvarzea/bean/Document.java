@@ -1,4 +1,6 @@
-package bean;
+package jnvarzea.bean;
+
+import jnvarzea.bean.Person;
 
 import java.util.Date;
 
