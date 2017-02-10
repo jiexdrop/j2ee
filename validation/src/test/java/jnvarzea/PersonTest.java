@@ -4,10 +4,7 @@ import jnvarzea.bean.Person;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.ValidatorFactory;
-import javax.validation.Validator;
+import javax.validation.*;
 
 import java.util.Set;
 
@@ -25,7 +22,7 @@ public class PersonTest {
         validator = factory.getValidator();
     }
     @Test
-    public void testNOk() {
+    public void testNOk0() {
         Person p2 = new Person();
         p2.setFirstName("21");
         p2.setLastName("a");
@@ -35,5 +32,33 @@ public class PersonTest {
         assertEquals(4, violations.size());
     }
 
+
+    @Test
+    public void testNOk1(){
+        Person p = new Person("Jean", "Francois", "Jade", "jeanfrancois@gmail.com", false);
+        Set<ConstraintViolation<Person>> violations = validator.validate(p);
+        assertEquals(0, violations.size());
+    }
+
+    @Test
+    public void testNOk2(){
+        Person p = new Person("Josh", "Francois", "", "joshfrancois@gmail.com", false);
+        Set<ConstraintViolation<Person>> violations = validator.validate(p);
+        assertEquals(1, violations.size());
+    }
+
+    @Test
+    public void testNOkBadLastNameBadLogin(){
+        Person p = new Person("Josh", "f", "", "joshfrancois@gmail.com", false);
+        Set<ConstraintViolation<Person>> violations = validator.validate(p);
+        assertEquals(2, violations.size());
+    }
+
+    @Test
+    public void testNOkNoMailBadLastName(){
+        Person p = new Person("Josh", "f", "BashExp", null , false);
+        Set<ConstraintViolation<Person>> violations = validator.validate(p);
+        assertEquals(2, violations.size());
+    }
 
 }
