@@ -34,7 +34,7 @@ public class PersonTest {
 
 
     @Test
-    public void testNOk1(){
+    public void testNOkToutVaBien(){
         Person p = new Person("Jean", "Francois", "Jade", "jeanfrancois@gmail.com", false);
         Set<ConstraintViolation<Person>> violations = validator.validate(p);
         assertEquals(0, violations.size());
