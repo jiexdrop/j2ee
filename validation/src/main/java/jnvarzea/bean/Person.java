@@ -1,5 +1,7 @@
 package jnvarzea.bean;
 
+import jnvarzea.constraints.LastName;
+import jnvarzea.constraints.Login;
 import org.hibernate.validator.constraints.Email;
 
 import javax.validation.constraints.NotNull;
@@ -11,13 +13,14 @@ import javax.validation.constraints.Pattern;
 public class Person {
     @Pattern(regexp = "[a-zA-Z]*",message = "first name error")
     private String firstName;
-    @Pattern(regexp = "[a-zA-Z]{2,12}",message = "first name error")
+
+    @LastName
     private String lastName;
 
     public Person() {
     }
 
-    @NotNull
+    @Login
     private String login;
 
     @NotNull
@@ -63,5 +66,13 @@ public class Person {
 
     public void setStudent(Boolean student) {
         isStudent = student;
+    }
+
+    public Person(String firstName, String lastName, String login, String email, Boolean isStudent) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.login = login;
+        this.email = email;
+        this.isStudent = isStudent;
     }
 }
