@@ -58,18 +58,19 @@ public class ControlRoom {
     public void createRoom(final String name) {
         unitOfWork.begin();
 
-        // TODO check unicity
+        if(roomDao.findByName(name)==null){
+            Room room = new Room();
+            room.setName(name);
+            roomDao.saveOrUpdate(room);
+        } else {
+            System.out.println("Room already exists... Aborting");
+        }
 
-        Room room = new Room();
-        room.setName(name);
-        roomDao.saveOrUpdate(room);
         unitOfWork.end();
     }
 
     public void deleteRoom(final String name) {
         unitOfWork.begin();
-
-        //TODO check unicity
 
         roomDao.deleteRoom(roomDao.findByName(name));
 
