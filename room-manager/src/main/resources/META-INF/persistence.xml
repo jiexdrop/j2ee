@@ -10,6 +10,7 @@
 
         <!-- Need to add all classes due to JPA persistence file scope problem -->
         <class>fr.iut.rm.persistence.domain.Room</class>
+        <class>fr.iut.rm.persistence.domain.AccessEvent</class>
 
         <properties>
 <!--            <property name="hibernate.hbm2ddl.auto" value="create-drop"/> -->
