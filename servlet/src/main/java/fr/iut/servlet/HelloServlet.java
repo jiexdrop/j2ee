@@ -16,7 +16,11 @@ public class HelloServlet extends HttpServlet {
 		out.println("<TITLE>Hello</TITLE>");
 		out.println("</HEAD>");
 		out.println("<BODY>");
-		out.println("<H1>Hello Jorge !</H1>");
+		out.println("<H1>Hello you ! Here are the menus !</H1>");
+        out.println("<H2><A href='home'> To hours</A></H2>");
+		out.println("<H2><A href='delete'> To delete</A></H2>");
+		out.println("<H2><A href='listRoom'> To list</A></H2>");
+        out.println("<H2><A href='manage'> To manage</A></H2>");
 		out.println("</BODY>");
 		out.println("</HTML>");
 		out.close();
