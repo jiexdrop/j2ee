@@ -48,7 +48,7 @@ public class IngredientDao {
         this.entityManager.get().remove(t);
     }
 
-
+    @Transactional
     public List<Ingredient> findAll() {
 
         StringBuilder query = new StringBuilder("from ");
@@ -58,11 +58,13 @@ public class IngredientDao {
         return ingredients;
     }
 
+    @Transactional
     public Ingredient findByName(String name) {
         StringBuilder query = new StringBuilder("from ");
         query.append(Ingredient.class.getName());
         query.append(" where name = \'" + name +"\'");
         Ingredient ingredient = (Ingredient) this.entityManager.get().createQuery(query.toString()).getSingleResult();
+        logger.debug("found Ingredient ", ingredient);
         return ingredient;
     }
 
@@ -72,6 +74,7 @@ public class IngredientDao {
      * @param ing Ingredient of interest
      * @return Number of times the ingredient of interest has been used
      */
+    @Transactional
     public Integer countUsagesInReceipes(Ingredient ing) {
 
         // TODO Return the right number of ingredients

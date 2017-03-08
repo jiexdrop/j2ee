@@ -104,8 +104,7 @@ public class InitServlet extends HttpServlet {
         step5.setStepText("Faire chauffer une poêle antiadhésive et la huiler très légèrement. Y verser une louche de pâte, la répartir dans la poêle puis attendre qu'elle soit cuite d'un côté avant de la retourner. Cuire ainsi toutes les crêpes à feu doux.");
         steps.add(step5);
 
-        Receipe receipe = new Receipe();
-        receipe.setTitle("Crèpes");
+        Receipe receipe = new Receipe("Crèpes");
         receipe.setCookTime(20);
         receipe.setPreparationTime(10);
         receipe.addIngredient(farine, 300, "g");

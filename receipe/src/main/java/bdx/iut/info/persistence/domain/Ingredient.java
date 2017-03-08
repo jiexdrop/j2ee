@@ -7,13 +7,12 @@ import java.io.Serializable;
 
 /**
  * Created by rgiot on 06/02/17.
- * TODO Add the Entities annotations
  */
 @Entity
 @Table(name="ingredient")
 public class Ingredient implements Serializable{
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @NotNull

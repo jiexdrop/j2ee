@@ -1,6 +1,6 @@
 package bdx.iut.info.web;
 
-import bdx.iut.info.web.servlet.ClientServlet;
+import bdx.iut.info.web.servlet.MainServlet;
 import bdx.iut.info.web.servlet.InitServlet;
 import com.google.inject.persist.PersistFilter;
 import com.google.inject.persist.jpa.JpaPersistModule;
@@ -34,7 +34,7 @@ public class WebModule extends ServletModule {
         logger.info("Install filters.");
 
         serve("/admin/init").with(InitServlet.class);
-        serve("/main").with(ClientServlet.class);
+        serve("/main").with(MainServlet.class);
         // TODO Add additional servlets
 
 

@@ -10,6 +10,7 @@ import java.util.List;
  * Created by rgiot on 06/02/17.
  */
 @Entity
+@Table(name="receipe")
 public class Receipe implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,13 +35,24 @@ public class Receipe implements Serializable {
     private List<IngredientQuantity> ingredients;
 
 
-    public Receipe() {
+
+    public Receipe(String title) {
+        this.title = title;
+        preparationTime = 0;
+        cookTime = 0;
         steps = new ArrayList<Step>();
         ingredients = new ArrayList<IngredientQuantity>();
     }
 
+    public Receipe(String title, Integer preparationTime, Integer cookTime, List<Step> steps, List<IngredientQuantity> ingredients) {
+        this.title = title;
+        this.preparationTime = preparationTime;
+        this.cookTime = cookTime;
+        this.steps = steps;
+        this.ingredients = ingredients;
+    }
+
     public void addIngredient(Ingredient ingredient, double quantity, String unitType) {
-        //TODO
         ingredients.add(new IngredientQuantity(ingredient, unitType, quantity));
     }
 
@@ -54,7 +66,6 @@ public class Receipe implements Serializable {
     }
 
     public void removeIngredient(Integer pos) {
-        //TODO
         ingredients.remove(ingredients.get(pos));
     }
 
