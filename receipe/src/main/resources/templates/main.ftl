@@ -30,7 +30,7 @@ Exemple liste
          </tr>
 
          <#list elements as elem>
-          <tr><td>${elem} </td><tr>
+          <tr><td>${elem.getTitle()} </td><tr>
          </#list>
 
              </table>

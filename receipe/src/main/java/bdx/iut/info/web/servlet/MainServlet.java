@@ -54,11 +54,13 @@ public class MainServlet extends HttpServlet{
         Map<String, Object> root = new HashMap<String, Object>();
 
 
-        List<Receipe> testList = receipeDao.findAll();
+        List<Receipe> receipesList = receipeDao.findAll();
 
+        Receipe r = new Receipe("aaaa");
+        receipeDao.create(r);
 
         root.put("Clef", "Valeur de n'importe quel type");
-        root.put("elements", testList);
+        root.put("elements", receipesList);
         root.put("receipes", receipes);
 
         // Manage freemarker stuff
@@ -75,7 +77,7 @@ public class MainServlet extends HttpServlet{
         }
 
         // navigation data and links
-        root.put("title", "Java EE - Recettes - v0.1");
+        root.put("title", "Java EE - Recettes");
 
         response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();

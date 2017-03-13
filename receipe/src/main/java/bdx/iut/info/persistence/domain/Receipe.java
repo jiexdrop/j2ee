@@ -34,7 +34,13 @@ public class Receipe implements Serializable {
     @NotNull
     private List<IngredientQuantity> ingredients;
 
-
+    public Receipe(){
+        this.title = "";
+        preparationTime = 0;
+        cookTime = 0;
+        steps = new ArrayList<Step>();
+        ingredients = new ArrayList<IngredientQuantity>();
+    }
 
     public Receipe(String title) {
         this.title = title;

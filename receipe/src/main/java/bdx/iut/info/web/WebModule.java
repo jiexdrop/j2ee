@@ -20,10 +20,6 @@ public class WebModule extends ServletModule {
 
     @Override
     protected final void configureServlets() {
-
-
-
-
         logger.info("WebModule configureServlets started...");
         super.configureServlets();
 
@@ -34,9 +30,10 @@ public class WebModule extends ServletModule {
 
         logger.info("Install filters.");
 
+        serve("/admin").with(AdminServlet.class);
         serve("/admin/init").with(InitServlet.class);
         serve("/main").with(MainServlet.class);
-        serve("/admin").with(AdminServlet.class);
+
         // TODO Add additional servlets
 
 

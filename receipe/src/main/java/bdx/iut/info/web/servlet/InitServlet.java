@@ -1,6 +1,7 @@
 package bdx.iut.info.web.servlet;
 
 import bdx.iut.info.persistence.dao.IngredientDao;
+import bdx.iut.info.persistence.dao.InstructionDao;
 import bdx.iut.info.persistence.dao.ReceipeDao;
 import bdx.iut.info.persistence.domain.Ingredient;
 import bdx.iut.info.persistence.domain.Step;
@@ -32,6 +33,9 @@ public class InitServlet extends HttpServlet {
 
     @Inject
     ReceipeDao receipeDao;
+
+    @Inject
+    InstructionDao instructionDao;
 
     /**
      * HTTP GET access
@@ -104,7 +108,7 @@ public class InitServlet extends HttpServlet {
         step5.setStepText("Faire chauffer une poêle antiadhésive et la huiler très légèrement. Y verser une louche de pâte, la répartir dans la poêle puis attendre qu'elle soit cuite d'un côté avant de la retourner. Cuire ainsi toutes les crêpes à feu doux.");
         steps.add(step5);
 
-        Receipe receipe = new Receipe("Crèpes");
+        Receipe receipe = new Receipe("Crepes");
         receipe.setCookTime(20);
         receipe.setPreparationTime(10);
         receipe.addIngredient(farine, 300, "g");
@@ -122,7 +126,7 @@ public class InitServlet extends HttpServlet {
 
         logger.info("Will add " + ingredients.size()+" ingredients");
         for(Ingredient ingredient: ingredients) {
-            resp.getOutputStream().print("<p> Add" + ingredient.getName() + "</p>");
+            resp.getOutputStream().print("<p> Add " + ingredient.getName() + "</p>");
             logger.info("Will add " + ingredient.getName());
             ingredientDao.create(ingredient);
         }
@@ -133,19 +137,19 @@ public class InitServlet extends HttpServlet {
             resp.getOutputStream().print(ingredient.getName() + " / " + ingredient.getUnitType());
         }
 
-/*
+
         resp.getOutputStream().print("Add instructions </br>");
         for(Step step : steps) {
             resp.getOutputStream().print("<p> Add" + step.getStepText() + "</p>");
             instructionDao.create(step);
         }
-*/
+
         receipeDao.create(receipe);
 
 
         resp.getOutputStream().print("<h1>Listing des recettes</h1>");
-        for(Receipe receipe1: receipeDao.findAll()) {
-            resp.getOutputStream().println(receipe1.toString());
+        for(Receipe receipeOfList: receipeDao.findAll()) {
+            resp.getOutputStream().println(receipeOfList.toString());
         }
 
 

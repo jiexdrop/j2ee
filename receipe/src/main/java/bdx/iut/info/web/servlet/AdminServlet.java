@@ -1,5 +1,9 @@
 package bdx.iut.info.web.servlet;
 
+import bdx.iut.info.persistence.dao.IngredientDao;
+import bdx.iut.info.persistence.dao.ReceipeDao;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -12,10 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by jnvarzea on 08/03/17.
  */
+@Singleton
 public class AdminServlet extends HttpServlet {
     private static final String BOOTFREE_TEMPLATE = "templates/admin.ftl";
     /**
@@ -26,6 +33,12 @@ public class AdminServlet extends HttpServlet {
      * Logger
      */
     private static final Logger logger = LoggerFactory.getLogger(MainServlet.class);
+
+    @Inject
+    IngredientDao ingredientDao;
+
+    @Inject
+    ReceipeDao receipeDao;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
@@ -47,9 +60,20 @@ public class AdminServlet extends HttpServlet {
 
         }
 
+        Map<String, Object> root = new HashMap<String, Object>();
+        root.put("title", "Java EE - Admin");
+
         response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
         assert freemarkerTemplate != null;
+
+        try {
+            freemarkerTemplate.process(root, out);
+            out.close();
+        } catch (TemplateException e) {
+            logger.error("Error during template processing", e);
+        }
+
 
         response.setContentType("text/html");
 

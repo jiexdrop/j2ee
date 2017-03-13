@@ -17,12 +17,12 @@
   </div>
 
 
-<div>
- <form>
- <span>Remplir la base</span>
- <input name="submit" type="submit" value="Remplir"/>
- </form>
-</div>
+    <div>
+     <form>
+     <span>Remplir la base</span>
+     <input name="submit" type="submit" value="Remplir"/>
+     </form>
+    </div>
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
