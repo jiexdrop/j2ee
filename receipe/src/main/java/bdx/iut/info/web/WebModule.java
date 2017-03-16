@@ -34,8 +34,6 @@ public class WebModule extends ServletModule {
         serve("/admin/init").with(InitServlet.class);
         serve("/main").with(MainServlet.class);
 
-        // TODO Add additional servlets
-
 
         logger.info("WebModule configureServlets ended.");
     }

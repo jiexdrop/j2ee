@@ -32,7 +32,7 @@ public class AdminServlet extends HttpServlet {
     /**
      * Logger
      */
-    private static final Logger logger = LoggerFactory.getLogger(MainServlet.class);
+    private static final Logger logger = LoggerFactory.getLogger(AdminServlet.class);
 
     @Inject
     IngredientDao ingredientDao;

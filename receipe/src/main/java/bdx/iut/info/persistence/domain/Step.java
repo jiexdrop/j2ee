@@ -1,10 +1,7 @@
 package bdx.iut.info.persistence.domain;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import bdx.iut.info.constraints.*;
@@ -13,6 +10,7 @@ import bdx.iut.info.constraints.*;
  * Created by rgiot on 06/02/17.
  */
 @Entity
+@Table(name="step")
 public class Step implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

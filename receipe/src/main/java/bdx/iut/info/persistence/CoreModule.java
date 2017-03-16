@@ -1,6 +1,7 @@
 package bdx.iut.info.persistence;
 
 import bdx.iut.info.persistence.dao.IngredientDao;
+import bdx.iut.info.persistence.dao.InstructionDao;
 import bdx.iut.info.persistence.dao.ReceipeDao;
 import com.google.inject.AbstractModule;
 import org.slf4j.Logger;
@@ -28,6 +29,10 @@ public class CoreModule extends AbstractModule {
 
         logger.info("Install Ingredient ReceipeDao");
         bind(ReceipeDao.class);
+
+
+        logger.info("Install Ingredient InstructionDao");
+        bind(InstructionDao.class);
 
         logger.info("CoreModule configuration ended.");
     }

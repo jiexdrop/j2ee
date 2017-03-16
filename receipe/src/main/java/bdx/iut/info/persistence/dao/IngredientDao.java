@@ -5,7 +5,6 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
 import com.google.inject.persist.Transactional;
-import org.hibernate.id.IncrementGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -77,7 +76,6 @@ public class IngredientDao {
     @Transactional
     public Integer countUsagesInReceipes(Ingredient ing) {
 
-        // TODO Return the right number of ingredients
         return 0;
     }
 

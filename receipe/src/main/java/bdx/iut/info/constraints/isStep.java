@@ -17,7 +17,7 @@ import java.lang.annotation.Target;
 @Constraint(validatedBy = {IsStepValidator.class})
 
 public @interface isStep{
-    String message() default "isStep incorrect : chain of 5 at 200 chars";
+    String message() default "isStep incorrect : chain of 5 at 500 chars";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

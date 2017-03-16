@@ -8,7 +8,7 @@ import javax.validation.ConstraintValidatorContext;
  */
 public class IsStepValidator implements ConstraintValidator<isStep, String> {
     private final static int MIN = 5;
-    private final static int MAX = 200;
+    private final static int MAX = 500;
     @Override
     public void initialize(isStep isStep) {
 

@@ -12,7 +12,7 @@ public class IngredientDaoTest extends AbstractDaoTest {
     @Test
     public void testPersistAndFindByName() {
 
-       Ingredient ingredient = new Ingredient("TestRoom");
+        Ingredient ingredient = new Ingredient("TestRoom");
 
         IngredientDao dao = this.getIngredientDao();
         dao.create(ingredient);

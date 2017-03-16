@@ -1,6 +1,5 @@
 package bdx.iut.info.persistence.dao;
 
-import bdx.iut.info.persistence.domain.Ingredient;
 import bdx.iut.info.persistence.domain.Receipe;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -22,7 +21,7 @@ public class ReceipeDao {
     @Inject
     private Provider<EntityManager> entityManager;
 
-    private static final Logger logger = LoggerFactory.getLogger(IngredientDao.class);
+    private static final Logger logger = LoggerFactory.getLogger(ReceipeDao.class);
 
     @Transactional
     public Receipe create(Receipe receipe) {
@@ -55,7 +54,7 @@ public class ReceipeDao {
         StringBuilder query = new StringBuilder("from ");
         query.append(Receipe.class.getName());
         List<Receipe> receipes = this.entityManager.get().createQuery(query.toString()).getResultList();
-        logger.debug("{} ingredients found", receipes);
+        logger.debug("{} receipes found", receipes);
         return receipes;
     }
 

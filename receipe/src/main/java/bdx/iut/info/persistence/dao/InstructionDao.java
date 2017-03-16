@@ -1,6 +1,5 @@
 package bdx.iut.info.persistence.dao;
 
-import bdx.iut.info.persistence.domain.Receipe;
 import bdx.iut.info.persistence.domain.Step;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -49,24 +48,14 @@ public class InstructionDao {
     }
 
     @Transactional
-    public List<Receipe> findAll() {
+    public List<Step> findAll() {
         StringBuilder query = new StringBuilder("from ");
-        query.append(Receipe.class.getName());
-        List<Receipe> receipes = this.entityManager.get().createQuery(query.toString()).getResultList();
-        logger.debug("{} ingredients found", receipes);
-        return receipes;
+        query.append(Step.class.getName());
+        List<Step> steps = this.entityManager.get().createQuery(query.toString()).getResultList();
+        logger.debug("{} ingredients found", steps);
+        return steps;
     }
 
 
-    @Transactional
-    public List<Receipe> findByName(final String name) {
-        StringBuilder query = new StringBuilder("from ");
-        query.append(Receipe.class.getName());
-        query.append(" where title = \'" + name +"\'");
-
-        List<Receipe> receipes = this.entityManager.get().createQuery(query.toString()).getResultList();
-        logger.debug("{} receipess found", receipes);
-        return receipes;
-    }
 
 }

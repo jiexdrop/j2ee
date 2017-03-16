@@ -140,12 +140,12 @@ public class InitServlet extends HttpServlet {
 
         resp.getOutputStream().print("Add instructions </br>");
         for(Step step : steps) {
-            resp.getOutputStream().print("<p> Add" + step.getStepText() + "</p>");
+            resp.getOutputStream().print("<p> Add " + step.getStepText() + "</p>");
             instructionDao.create(step);
         }
-
+        resp.getOutputStream().print("Try to create recipe");
         receipeDao.create(receipe);
-
+        resp.getOutputStream().print("Recipe" + receipe.getTitle() + "Created");
 
         resp.getOutputStream().print("<h1>Listing des recettes</h1>");
         for(Receipe receipeOfList: receipeDao.findAll()) {
