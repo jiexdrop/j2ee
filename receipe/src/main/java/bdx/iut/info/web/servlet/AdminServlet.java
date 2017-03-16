@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -48,6 +49,8 @@ public class AdminServlet extends HttpServlet {
         if (req.getParameter("action") != null && req.getParameter("action").equals("addReceipe")) {
             Receipe receipe = new Receipe();
             receipe.setTitle(req.getParameter("receipeName"));
+            receipe.setCookTime(Integer.valueOf(req.getParameter("cookTime")));
+            //receipe.addIngredient();
             receipeDao.create(receipe);
         }
 
@@ -66,6 +69,8 @@ public class AdminServlet extends HttpServlet {
 
         Map<String, Object> root = new HashMap<String, Object>();
         root.put("title", "Java EE - Admin");
+        List<Receipe> receipesList = receipeDao.findAll();
+        root.put("receipesList", receipesList);
 
         response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();

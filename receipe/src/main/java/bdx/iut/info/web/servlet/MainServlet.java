@@ -58,7 +58,7 @@ public class MainServlet extends HttpServlet{
 
 
         root.put("Clef", "Voici la liste des recettes dans la base");
-        root.put("elements", receipesList);
+        root.put("receipesList", receipesList);
         root.put("receipes", receipes);
 
         // Manage freemarker stuff

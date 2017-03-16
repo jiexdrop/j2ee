@@ -40,9 +40,10 @@
   <div class="container">
     <div class="jumbotron">
       <form>
-        <span>Ajouter Recette</span>
+        <span>Ajouter Recette</span></br>
 
-        <input name="receipeName"/>
+        <input name="receipeName"/></br>
+        <input type="number" step="5" name="cookTime"/></br>
         <input name="action" value="addReceipe" type="hidden"/>
         <input name="submit" type="submit" value="Ajouter"/>
       </form>
@@ -51,6 +52,13 @@
 
   <div class="container">
     <div class="jumbotron">
+      <select class="form-control" id="sel1">
+        <#list receipesList as recipe>
+        <option>
+          ${recipe.getTitle()}
+        </option>
+        </#list>
+      </select>
       <form>
         <span>Suppression Recette</span>
         <input name="submit" type="submit" value="Supprimer"/>
