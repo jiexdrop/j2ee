@@ -53,13 +53,11 @@ public class MainServlet extends HttpServlet{
         // Configure the objets to give to freemarker
         Map<String, Object> root = new HashMap<String, Object>();
 
-        Receipe r = new Receipe("Recette");
-        receipeDao.create(r);
 
         List<Receipe> receipesList = receipeDao.findAll();
 
 
-        root.put("Clef", "Valeur de n'importe quel type");
+        root.put("Clef", "Voici la liste des recettes dans la base");
         root.put("elements", receipesList);
         root.put("receipes", receipes);
 

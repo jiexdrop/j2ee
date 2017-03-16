@@ -19,7 +19,9 @@ public class InstructionDaoTest extends AbstractDaoTest {
 
         Step step = new Step();
 
-        step.setStepText("Faire chauffer une poêle antiadhésive et la huiler très légèrement. Y verser une louche de pâte, la répartir dans la poêle puis attendre qu'elle soit cuite d'un côté avant de la retourner. Cuire ainsi toutes les crêpes à feu doux.");
+        step.setStepText("Faire chauffer une poêle antiadhésive et la huiler très légèrement. Y verser une louche de pâte," +
+                " la répartir dans la poêle puis attendre qu'elle soit cuite d'un côté avant de la retourner." +
+                " Cuire ainsi toutes les crêpes à feu doux.");
 
         InstructionDao dao = this.getInstructionDao();
         dao.create(step);

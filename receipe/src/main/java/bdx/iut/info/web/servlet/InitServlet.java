@@ -153,6 +153,6 @@ public class InitServlet extends HttpServlet {
         }
 
 
-        resp.getOutputStream().print("done");
+        resp.getOutputStream().print("<p><a href='/receipe/admin'> Fait ! Retour à l'interface admin</a></p>");
     }
 }

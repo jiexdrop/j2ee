@@ -75,7 +75,7 @@ public class IngredientDao {
      */
     @Transactional
     public Integer countUsagesInReceipes(Ingredient ing) {
-
+        StringBuilder query = new StringBuilder("");
         return 0;
     }
 

@@ -2,6 +2,7 @@ package bdx.iut.info.web.servlet;
 
 import bdx.iut.info.persistence.dao.IngredientDao;
 import bdx.iut.info.persistence.dao.ReceipeDao;
+import bdx.iut.info.persistence.domain.Receipe;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import freemarker.template.DefaultObjectWrapper;
@@ -10,6 +11,8 @@ import freemarker.template.TemplateException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,9 +45,10 @@ public class AdminServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
-        if (req.getParameter("submit") != null && req.getParameter("submit").equals("Remplir")) {
-            InitServlet initServlet = new InitServlet();
-            initServlet.doGet(req, response);
+        if (req.getParameter("action") != null && req.getParameter("action").equals("addReceipe")) {
+            Receipe receipe = new Receipe();
+            receipe.setTitle(req.getParameter("receipeName"));
+            receipeDao.create(receipe);
         }
 
         // Manage freemarker stuff
