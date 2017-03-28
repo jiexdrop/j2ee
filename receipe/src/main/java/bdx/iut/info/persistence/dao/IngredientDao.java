@@ -75,7 +75,9 @@ public class IngredientDao {
      */
     @Transactional
     public Integer countUsagesInReceipes(Ingredient ing) {
-        StringBuilder query = new StringBuilder("");
+        StringBuilder query = new StringBuilder("from ");
+        query.append(Receipe.class.getName());
+
         return 0;
     }
 

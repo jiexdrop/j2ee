@@ -144,4 +144,13 @@ public class Receipe implements Serializable {
         }
         return txt;
     }
+
+    /**
+     * test purposes
+     * @param ingredient
+     */
+    @Deprecated
+    public void addIngredient(Ingredient ingredient) {
+        ingredients.add(new IngredientQuantity(ingredient, "weight", 1));
+    }
 }

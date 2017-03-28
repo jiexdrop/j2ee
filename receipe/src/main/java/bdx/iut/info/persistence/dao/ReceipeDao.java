@@ -70,4 +70,15 @@ public class ReceipeDao {
         return receipes;
     }
 
+    @Transactional
+    public Receipe findSingleByName(final String name) {
+        StringBuilder query = new StringBuilder("from ");
+        query.append(Receipe.class.getName());
+        query.append(" where title = \'" + name +"\'");
+
+        List<Receipe> receipes = this.entityManager.get().createQuery(query.toString()).getResultList();
+        logger.debug("{} receipess found", receipes);
+        return receipes.get(0);
+    }
+
 }

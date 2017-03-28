@@ -56,7 +56,8 @@
       <table class="table">
         <tr>
           <th>Recettes</th>
-          <th>Temps</th>
+          <th>Temps de Cuisson</th>
+          <th>Temps de Préparation</th>
         </tr>
 
         <#list receipesList as recipe>
@@ -66,6 +67,9 @@
           </td>
           <td>
             ${recipe.getCookTime()}
+          </td>
+          <td>
+            ${recipe.getPreparationTime()}
           </td>
         </tr>
         </#list>

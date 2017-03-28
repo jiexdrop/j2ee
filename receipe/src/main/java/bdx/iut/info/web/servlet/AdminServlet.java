@@ -2,6 +2,7 @@ package bdx.iut.info.web.servlet;
 
 import bdx.iut.info.persistence.dao.IngredientDao;
 import bdx.iut.info.persistence.dao.ReceipeDao;
+import bdx.iut.info.persistence.domain.Ingredient;
 import bdx.iut.info.persistence.domain.Receipe;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
@@ -50,9 +51,24 @@ public class AdminServlet extends HttpServlet {
             Receipe receipe = new Receipe();
             receipe.setTitle(req.getParameter("receipeName"));
             receipe.setCookTime(Integer.valueOf(req.getParameter("cookTime")));
-            //receipe.addIngredient();
+            receipe.setPreparationTime(Integer.valueOf(req.getParameter("preparationTime")));
+            receipe.addIngredient(ingredientDao.findByName(req.getParameter("ingredient")));
             receipeDao.create(receipe);
         }
+
+        if (req.getParameter("action") != null && req.getParameter("action").equals("addIngredient")) {
+            Ingredient ingredient = new Ingredient();
+            ingredient.setName(req.getParameter("ingredientName"));
+            //receipe.addIngredient();
+            ingredientDao.create(ingredient);
+        }
+
+        //TODO
+        if (req.getParameter("action") != null && req.getParameter("action").equals("deleteReceipe")) {
+            receipeDao.delete(receipeDao.findSingleByName(req.getParameter("receipe")));
+        }
+
+
 
         // Manage freemarker stuff
         Template freemarkerTemplate = null;
@@ -71,6 +87,9 @@ public class AdminServlet extends HttpServlet {
         root.put("title", "Java EE - Admin");
         List<Receipe> receipesList = receipeDao.findAll();
         root.put("receipesList", receipesList);
+
+        List<Ingredient> ingredientsList = ingredientDao.findAll();
+        root.put("ingredientsList", ingredientsList);
 
         response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
