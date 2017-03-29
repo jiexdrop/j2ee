@@ -44,9 +44,11 @@ public class ReceipeDao {
     }
 
     @Transactional
-    public void delete(Receipe receipe) {
-        receipe = this.entityManager.get().merge(receipe);
-        this.entityManager.get().remove(receipe);
+    public void delete(List<Receipe> receipes) {
+        this.entityManager.get();
+        for(Receipe receipe : receipes){
+            this.entityManager.get().remove(receipe);
+        }
     }
 
     @Transactional
@@ -68,17 +70,6 @@ public class ReceipeDao {
         List<Receipe> receipes = this.entityManager.get().createQuery(query.toString()).getResultList();
         logger.debug("{} receipess found", receipes);
         return receipes;
-    }
-
-    @Transactional
-    public Receipe findSingleByName(final String name) {
-        StringBuilder query = new StringBuilder("from ");
-        query.append(Receipe.class.getName());
-        query.append(" where title = \'" + name +"\'");
-
-        List<Receipe> receipes = this.entityManager.get().createQuery(query.toString()).getResultList();
-        logger.debug("{} receipess found", receipes);
-        return receipes.get(0);
     }
 
 }

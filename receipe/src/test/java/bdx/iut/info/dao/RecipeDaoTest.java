@@ -86,6 +86,49 @@ public class RecipeDaoTest extends AbstractDaoTest {
         assertEquals("Cuire",receipe0.getSteps().get(1).getStepText());
     }
 
+    @Test
+    public void deleteRecipes() {
+        Receipe receipe = new Receipe("Meringues");
+
+        ReceipeDao receipeDao = this.getReceipeDao();
+        receipeDao.create(receipe);
+
+        assertEquals(1, receipeDao.findAll().size());
+
+        receipeDao.delete(receipeDao.findByName("Meringues"));
+
+        assertEquals(0, receipeDao.findAll().size());
+
+    }
+
+
+    @Test
+    public void recipesIngredients() {
+        Receipe receipe = new Receipe("Meringues");
+        Ingredient ingredient1 = new Ingredient("Blancs");
+        Ingredient ingredient2 = new Ingredient("Sucre");
+        IngredientDao ingredientDao = getIngredientDao();
+        ingredientDao.create(ingredient1);
+        ingredientDao.create(ingredient2);
+
+        receipe.addIngredient(ingredient1);
+        receipe.addIngredient(ingredient2);
+
+
+
+        ReceipeDao receipeDao = this.getReceipeDao();
+        receipeDao.create(receipe);
+
+        //for(Receipe receipes : receipeDao.findAll()){
+        //    System.out.println(receipes.getIngredientsText());
+        //}
+
+    }
+
+
+    private IngredientDao getIngredientDao() {
+        return this.injector.getInstance(IngredientDao.class);
+    }
 
     private ReceipeDao getReceipeDao() {
         return this.injector.getInstance(ReceipeDao.class);

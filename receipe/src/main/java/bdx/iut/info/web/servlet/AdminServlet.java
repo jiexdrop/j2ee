@@ -63,9 +63,9 @@ public class AdminServlet extends HttpServlet {
             ingredientDao.create(ingredient);
         }
 
-        //TODO
         if (req.getParameter("action") != null && req.getParameter("action").equals("deleteReceipe")) {
-            receipeDao.delete(receipeDao.findSingleByName(req.getParameter("receipe")));
+            receipeDao.delete(receipeDao.findByName(req.getParameter("receipe")));
+
         }
 
 

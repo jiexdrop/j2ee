@@ -58,6 +58,7 @@
           <th>Recettes</th>
           <th>Temps de Cuisson</th>
           <th>Temps de Préparation</th>
+          <th>Principaux Ingrédients</th>
         </tr>
 
         <#list receipesList as recipe>
@@ -70,6 +71,9 @@
           </td>
           <td>
             ${recipe.getPreparationTime()}
+          </td>
+          <td>
+            ${recipe.toString()}
           </td>
         </tr>
         </#list>

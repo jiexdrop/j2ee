@@ -1,5 +1,7 @@
 package bdx.iut.info.persistence.domain;
 
+import org.hibernate.Hibernate;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -141,6 +143,15 @@ public class Receipe implements Serializable {
         txt += "Instructions" + "\n";
         for(Step step : getSteps()) {
             txt += step.toString() + "\n";
+        }
+        return txt;
+    }
+
+
+    public java.lang.String getIngredientsText(){
+        String txt = "";
+        for(IngredientQuantity ingredient: getIngredients()) {
+            txt += ingredient.toString() + ", ";
         }
         return txt;
     }
